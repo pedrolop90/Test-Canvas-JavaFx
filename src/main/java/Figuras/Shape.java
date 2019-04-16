@@ -1,10 +1,8 @@
 package Figuras;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.*;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 import java.util.List;
 
@@ -18,6 +16,7 @@ public abstract class Shape {
     protected DoubleProperty maxW=new SimpleDoubleProperty();
     protected DoubleProperty maxH=new SimpleDoubleProperty();
     protected IntegerProperty id=new SimpleIntegerProperty();
+    protected BooleanProperty selected=new SimpleBooleanProperty();
 
     public Shape(){
         reiniciar();
@@ -43,6 +42,17 @@ public abstract class Shape {
         maxW.set(Math.max(maxW.get(),w.get()));
         maxH.set(Math.max(maxH.get(),h.get()));
         g.clearRect(x.get(),y.get(),maxW.get(),maxH.get());
+    }
+
+    public void figuraSeleccionada(GraphicsContext g){
+        g.setFill(Color.RED);
+        double tamX=10;
+        double tamY=10;
+        g.fillRect((x.get()+w.get())/2,y.get(),tamX,tamY);
+        g.fillRect((x.get()+w.get())/2,y.get()+h.get(),tamX,tamY);
+        g.fillRect(x.get(),(y.get()+h.get())/2,tamX,tamY);
+        g.fillRect(x.get()+w.get(),(y.get()+h.get())/2,tamX,tamY);
+        g.setFill(Color.BLUE);
     }
 
     public void reiniciar(){
@@ -154,4 +164,15 @@ public abstract class Shape {
         this.id.set(id);
     }
 
+    public boolean isSelected() {
+        return selected.get();
+    }
+
+    public BooleanProperty selectedProperty() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected.set(selected);
+    }
 }

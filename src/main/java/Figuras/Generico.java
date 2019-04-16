@@ -42,6 +42,16 @@ public class Generico extends Shape{
     @Override
     public void draw(GraphicsContext g) {
         for (int i = 0; i < figuras.size(); i++) {
+            if(x.get()!=-1&&y.get()!=-1) {
+                Shape a = figuras.get(i);
+                double xW = a.getX() + a.getW();
+                double yH = a.getY() + a.getH();
+                if (a.getX() >= x.get() && xW <= x.get() && a.getY() >= y.get() && yH <= y.get()) {
+                    figuras.get(i).selectedProperty().set(true);
+                }
+            }else{
+                figuras.get(i).selectedProperty().set(false);
+            }
             figuras.get(i).draw(g);
         }
     }

@@ -40,6 +40,9 @@ public class SemiCirculoFill extends Shape {
     @Override
     public void draw(GraphicsContext g) {
         limpiar(g);
+        if(selected.get()){
+            figuraSeleccionada(g);
+        }
         g.fillArc(x.get(),y.get(),w.get(),h.get(),startAngulo.getValue(),arcExtent.getValue(), arcType.get());
     }
 

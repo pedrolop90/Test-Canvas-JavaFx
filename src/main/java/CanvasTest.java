@@ -1,3 +1,4 @@
+import Figuras.Generico;
 import Figuras.Shape;
 import javafx.beans.property.*;
 import javafx.event.EventHandler;
@@ -28,22 +29,10 @@ public class CanvasTest extends Canvas {
         selectionHandler= new SelectionHandler();
         this.setOnMousePressed(selectionHandler);
         this.setOnMouseMoved(selectionHandler);
-        accionActual.addListener(observable -> {
-            /*
-            accionActual.get().setId(contador.get());
-            colisiones.put(contador.get(),new ArrayList<Shape>());
-            figuras.add(accionActual.getValue());
-            */
             accionActual.get().xProperty().bindBidirectional(selectionHandler.x);
             accionActual.get().yProperty().bindBidirectional(selectionHandler.y);
             accionActual.get().wProperty().bindBidirectional(selectionHandler.w);
             accionActual.get().hProperty().bindBidirectional(selectionHandler.h);
-            /*
-            selectionHandler.reiniciar();
-            accionActual.get().reiniciar();
-            contador.setValue(contador.get()+1);
-            */
-        });
         render();
     }
 
@@ -57,7 +46,6 @@ public class CanvasTest extends Canvas {
     public ObjectProperty<Shape> getAccionActual(){
         return accionActual;
     }
-
     private class SelectionHandler implements EventHandler<MouseEvent> {
         public DoubleProperty x = new SimpleDoubleProperty(-1);
         public DoubleProperty y = new SimpleDoubleProperty(-1);
@@ -82,17 +70,22 @@ public class CanvasTest extends Canvas {
             }
         }
         public void handleMousePressed(MouseEvent evt){
-            if(!activo){
-                x.set(evt.getX());
-                y.set(evt.getY());
-                w.set(-1);
-                h.set(-1);
-                activo=true;
-            }else if(activo&& w.get() !=-1&& h.get() !=-1){
-                w.set(evt.getX()- x.get());
-                h.set(evt.getY()- y.get());
-                activo=false;
+            if(false) {
+                if (!activo) {
+                    x.set(evt.getX());
+                    y.set(evt.getY());
+                    w.set(-1);
+                    h.set(-1);
+                    activo = true;
+                } else if (activo && w.get() != -1 && h.get() != -1) {
+                    w.set(evt.getX() - x.get());
+                    h.set(evt.getY() - y.get());
+                    activo = false;
+                }
+                render();
             }
+            x.set(evt.getX());
+            y.set(evt.getY());
             render();
         }
 
