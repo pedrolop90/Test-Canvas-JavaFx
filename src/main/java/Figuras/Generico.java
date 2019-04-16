@@ -4,6 +4,7 @@ import Figuras.Fill.*;
 import Figuras.Stroke.CirculoStroke;
 import Figuras.Stroke.RectanguloEsquinasRedondeadasStroke;
 import Figuras.Stroke.RectanguloStroke;
+import Figuras.Stroke.SemiCirculoStroke;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class Generico extends Shape{
     public static final Integer RECTANGULO_STROKE = 3;
     public static final Integer CIRCULO_STROKE = 4;
     public static final Integer RECTANGULO_ESQUINAS_REDONDEADAS_STROKE = 10;
+    public static final Integer SEMI_CIRCULO_STROKE = 11;
 
     private List<Shape> figuras=new ArrayList<>();
 
@@ -63,6 +65,8 @@ public class Generico extends Shape{
             return new CuadrilateroConcavoFill(valores);
         }else if(f == RECTANGULO_ESQUINAS_REDONDEADAS_STROKE){
             return new RectanguloEsquinasRedondeadasStroke(valores);
+        }else if(f == SEMI_CIRCULO_STROKE){
+            return new SemiCirculoStroke(valores);
         }
         return null;
     }
