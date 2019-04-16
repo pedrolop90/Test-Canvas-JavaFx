@@ -27,7 +27,7 @@ public class testFillCuadrilateroConcavo extends Application {
         valores.get(cont).add(20d);
         valores.get(cont).add(100d);
         valores.get(cont).add(100d);
-        valores.get(cont).add(0.6d);
+        valores.get(cont).add(0.8d);
         List<Integer> figuras=new ArrayList<>();
         figuras.add(Generico.CUADRILATERO_CONCAVO);
         figuras.add(Generico.CUADRILATERO_CONCAVO);

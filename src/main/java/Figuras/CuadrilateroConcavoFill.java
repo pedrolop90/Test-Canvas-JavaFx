@@ -29,7 +29,7 @@ public class CuadrilateroConcavoFill extends Shape {
         double por=h.getValue()*porcentaje.get();
         double pointXF=x.get()+w.get();
         double pointYF=y.get()+h.get();
-        double[] vectX={x.get(),pointXF/2,pointXF,pointXF/2};
+        double[] vectX={x.get(),x.get()+(w.get()/2),pointXF,x.get()+(w.get()/2)};
         double[] vectY={pointYF,y.get()+por,pointYF,y.get()};
         g.fillPolygon(vectX,vectY,4);
     }
