@@ -3,14 +3,14 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class testFillRectangulo extends Application {
+public class testStrokeRectangulo extends Application {
 
     public static void main(String[] args) {
         launch(args);
     }
 
     public void start(Stage primaryStage) throws Exception {
-        Generico f=new Generico(Generico.RECTANGULO_FILL,20,20,200,200);
+        Generico f=new Generico(Generico.RECTANGULO_STROKE,20,20,200,200);
         ContenedorPrincipal contenedor=new ContenedorPrincipal(800,600,f,false);
         Scene scene=new Scene(contenedor,800,600);
         primaryStage.setScene(scene);

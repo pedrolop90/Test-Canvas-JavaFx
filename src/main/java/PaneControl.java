@@ -32,8 +32,8 @@ public class PaneControl extends GridPane {
         setVgap(10);
         setHgap(10);
         setPadding(new Insets(10));
-        botones.add(crearBoton("Cuadrado",null,0,0,new Rectangle(),0));
-        botones.add(crearBoton("Circulo",null,1,0,new Circulo(),1));
+        botones.add(crearBoton("Cuadrado",null,0,0,new RectangleFill(),0));
+        botones.add(crearBoton("CirculoFill",null,1,0,new CirculoFill(),1));
 
     }
 
