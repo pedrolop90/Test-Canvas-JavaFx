@@ -21,14 +21,12 @@ public abstract class Shape {
         reiniciar();
     }
 
-    public Shape(Shape shape){
-        x.set(shape.getX());
-        y.set(shape.getY());
-        w.set(shape.getW());
-        h.set(shape.getH());
-        z.set(shape.getZ());
-        maxW.set(shape.getMaxW());
-        maxH.set(shape.getMaxH());
+    public Shape(double x,double y,double width,double height){
+        reiniciar();
+        this.x.set(x);
+        this.y.set(y);
+        this.w.set(width);
+        this.h.set(height);
     }
 
     protected void limpiar(GraphicsContext g){
@@ -146,17 +144,4 @@ public abstract class Shape {
         this.id.set(id);
     }
 
-    @Override
-    public String toString() {
-        return "Shape{" +
-                "x=" + x +
-                ", y=" + y +
-                ", w=" + w +
-                ", h=" + h +
-                ", z=" + z +
-                ", maxW=" + maxW +
-                ", maxH=" + maxH +
-                ", id=" + id +
-                '}';
-    }
 }

@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class CanvasTest extends Canvas {
+
     private ObjectProperty<Shape> accionActual=new SimpleObjectProperty<Shape>();
     private List<Shape> figuras=new ArrayList<>();
     private Map<Integer,List<Shape>> colisiones=new TreeMap<>();
@@ -19,24 +20,29 @@ public class CanvasTest extends Canvas {
     private SelectionHandler selectionHandler;
     private IntegerProperty contador=new SimpleIntegerProperty(0);
 
-    public CanvasTest(double width, double height){
+    public CanvasTest(double width, double height,Shape accion){
         super();
         this.setWidth(width);
         this.setHeight(height);
+        accionActual.set(accion);
         selectionHandler= new SelectionHandler();
         this.setOnMousePressed(selectionHandler);
         this.setOnMouseMoved(selectionHandler);
         accionActual.addListener(observable -> {
+            /*
             accionActual.get().setId(contador.get());
             colisiones.put(contador.get(),new ArrayList<Shape>());
             figuras.add(accionActual.getValue());
+            */
             accionActual.get().xProperty().bindBidirectional(selectionHandler.x);
             accionActual.get().yProperty().bindBidirectional(selectionHandler.y);
             accionActual.get().wProperty().bindBidirectional(selectionHandler.w);
             accionActual.get().hProperty().bindBidirectional(selectionHandler.h);
+            /*
             selectionHandler.reiniciar();
             accionActual.get().reiniciar();
             contador.setValue(contador.get()+1);
+            */
         });
         render();
     }
@@ -53,13 +59,11 @@ public class CanvasTest extends Canvas {
     }
 
     private class SelectionHandler implements EventHandler<MouseEvent> {
-
         public DoubleProperty x = new SimpleDoubleProperty(-1);
         public DoubleProperty y = new SimpleDoubleProperty(-1);
         public DoubleProperty w = new SimpleDoubleProperty(-1);
         public DoubleProperty h = new SimpleDoubleProperty(-1);
         private boolean activo=false;
-
         @Override
         public void handle(MouseEvent evt) {
             if (evt.getEventType() == MouseEvent.MOUSE_MOVED) {

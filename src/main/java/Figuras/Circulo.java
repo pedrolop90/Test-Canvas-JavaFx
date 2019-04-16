@@ -4,12 +4,12 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class Circulo extends Shape {
 
-    public Circulo(Circulo circulo){
-        super(circulo);
-    }
-
     public Circulo(){
         super();
+    }
+
+    public Circulo(double x,double y,double width,double height){
+        super(x,y,width,height);
     }
 
     @Override
