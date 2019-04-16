@@ -8,6 +8,7 @@ public class Generico extends Shape{
     public static final Integer CIRCULO_FILL = 2;
     public static final Integer RECTANGULO_STROKE = 3;
     public static final Integer CIRCULO_STROKE = 4;
+    public static final Integer RECTANGULO_ESQUINAS_REDONDEADAS = 5;
 
     private Shape figura;
 
@@ -29,8 +30,17 @@ public class Generico extends Shape{
             return new RectanguloStroke(x,y,width,heigth);
         }else if(f == CIRCULO_STROKE){
             return new CirculoStroke(x,y,width,heigth);
+        }else if(f == RECTANGULO_ESQUINAS_REDONDEADAS){
+            return new RectanguloEsquinasRedondeadas(x,y,width,heigth);
         }
         return null;
     }
 
+    public Shape getFigura() {
+        return figura;
+    }
+
+    public void setFigura(Shape figura) {
+        this.figura = figura;
+    }
 }

@@ -8,8 +8,8 @@ public class CirculoStroke extends Shape {
         super();
     }
 
-    public CirculoStroke(double x, double y, double width, double height){
-        super(x,y,width,height);
+    public CirculoStroke(double x, double y, double width, double height) {
+        super(x, y, width, height);
     }
 
     @Override
