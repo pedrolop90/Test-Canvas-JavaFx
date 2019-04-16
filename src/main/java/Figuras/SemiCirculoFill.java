@@ -9,18 +9,18 @@ import javafx.scene.shape.ArcType;
 
 import java.util.List;
 
-public class SemiCirculo extends Shape {
+public class SemiCirculoFill extends Shape {
 
     private DoubleProperty startAngulo=new SimpleDoubleProperty();
     private DoubleProperty arcExtent=new SimpleDoubleProperty();
     private ObjectProperty<ArcType> arcType=new SimpleObjectProperty<ArcType>();
 
 
-    public SemiCirculo(){
+    public SemiCirculoFill(){
         super();
     }
 
-    public SemiCirculo(double x, double y, double width, double height){
+    public SemiCirculoFill(double x, double y, double width, double height){
         super(x,y,width,height);
         startAngulo.set(0);
         arcExtent.set(180);
@@ -28,7 +28,7 @@ public class SemiCirculo extends Shape {
     }
 
 
-    public SemiCirculo(List<Object> valores){
+    public SemiCirculoFill(List<Object> valores){
         super(valores);
         startAngulo.set((Double)valores.get(4));
         arcExtent.set((Double)valores.get(5));

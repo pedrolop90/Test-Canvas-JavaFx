@@ -13,6 +13,7 @@ public class Generico extends Shape{
     public static final Integer CIRCULO_STROKE = 4;
     public static final Integer RECTANGULO_ESQUINAS_REDONDEADAS_FILL = 5;
     public static final Integer SEMI_CIRCULO = 6;
+    public static final Integer TRIANGULO_FILL = 7;
 
     private List<Shape> figuras=new ArrayList<>();
 
@@ -46,7 +47,9 @@ public class Generico extends Shape{
         }else if(f == RECTANGULO_ESQUINAS_REDONDEADAS_FILL){
             return new RectanguloEsquinasRedondeadasFill(valores);
         }else if(f == SEMI_CIRCULO){
-            return new SemiCirculo(valores);
+            return new SemiCirculoFill(valores);
+        }else if(f == TRIANGULO_FILL){
+            return new TrianguloFill(valores);
         }
         return null;
     }

@@ -16,7 +16,8 @@ public class Prueba extends Shape {
     @Override
     public void draw(GraphicsContext g) {
         limpiar(g);
-        double ang=50;
-        g.fillArc(x.get(),y.get(),w.get(),h.get(),0,180, ArcType.ROUND);
+        double[] vectX={1,100,50};
+        double[] vectY={100,100,25};
+        g.fillPolygon(vectX,vectY,3);
     }
 }
