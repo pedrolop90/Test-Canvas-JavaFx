@@ -1,5 +1,6 @@
-package Figuras;
+package Figuras.Fill;
 
+import Figuras.Shape;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;

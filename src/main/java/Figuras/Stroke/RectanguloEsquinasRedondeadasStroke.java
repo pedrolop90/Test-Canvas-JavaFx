@@ -1,26 +1,27 @@
-package Figuras;
+package Figuras.Stroke;
 
+import Figuras.Shape;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.List;
 
-public class RectanguloEsquinasRedondeadasFill extends Shape {
+public class RectanguloEsquinasRedondeadasStroke extends Shape {
 
     private DoubleProperty porcentaje=new SimpleDoubleProperty();
 
-    public RectanguloEsquinasRedondeadasFill(){
+    public RectanguloEsquinasRedondeadasStroke(){
         super();
     }
 
-    public RectanguloEsquinasRedondeadasFill(double x, double y, double width, double height) {
+    public RectanguloEsquinasRedondeadasStroke(double x, double y, double width, double height) {
         super(x, y, width, height);
         this.porcentaje.set(10);
     }
 
 
-    public RectanguloEsquinasRedondeadasFill(List<Object> valores){
+    public RectanguloEsquinasRedondeadasStroke(List<Object> valores){
         super(valores);
         this.porcentaje.set((Double)valores.get(4));
     }
@@ -30,7 +31,7 @@ public class RectanguloEsquinasRedondeadasFill extends Shape {
     public void draw(GraphicsContext g) {
         limpiar(g);
         double ang=(porcentaje.getValue()*w.get())/100;
-        g.fillRoundRect(x.get(),y.get(),w.get(),h.get(),ang,ang);
+        g.strokeRoundRect(x.get(),y.get(),w.get(),h.get(),ang,ang);
     }
 
     public double getPorcentaje() {

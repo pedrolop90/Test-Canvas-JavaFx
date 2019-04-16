@@ -2,6 +2,7 @@ package Figuras;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.shape.ArcType;
+import javafx.scene.shape.FillRule;
 
 public class Prueba extends Shape {
 
@@ -16,8 +17,6 @@ public class Prueba extends Shape {
     @Override
     public void draw(GraphicsContext g) {
         limpiar(g);
-        double[] vectX={1,100,50};
-        double[] vectY={100,100,25};
-        g.fillPolygon(vectX,vectY,3);
+        //g.strokeRoundRect();
     }
 }

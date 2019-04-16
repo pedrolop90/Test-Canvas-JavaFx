@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class testFillRectanguloEsquinasRedondeadas extends Application {
+public class testStrokeRectanguloEsquinasRedondeadas extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -19,7 +19,7 @@ public class testFillRectanguloEsquinasRedondeadas extends Application {
         valores.add(200d);
         valores.add(200d);
         valores.add(30d);
-        Generico f=new Generico(Generico.RECTANGULO_ESQUINAS_REDONDEADAS_FILL,valores);
+        Generico f=new Generico(Generico.RECTANGULO_ESQUINAS_REDONDEADAS_STROKE,valores);
         ContenedorPrincipal contenedor=new ContenedorPrincipal(800,600,f,false);
         Scene scene=new Scene(contenedor,800,600);
         primaryStage.setScene(scene);

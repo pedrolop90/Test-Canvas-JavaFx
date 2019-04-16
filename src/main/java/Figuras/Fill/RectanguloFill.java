@@ -1,22 +1,23 @@
-package Figuras;
+package Figuras.Fill;
 
 
+import Figuras.Shape;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.List;
 
-public class RecntanguloFill extends Shape{
+public class RectanguloFill extends Shape {
 
 
-    public RecntanguloFill(){
+    public RectanguloFill(){
         super();
     }
 
-    public RecntanguloFill(double x, double y, double width, double height){
+    public RectanguloFill(double x, double y, double width, double height){
         super(x,y,width,height);
     }
 
-    public RecntanguloFill(List<Object> valores){
+    public RectanguloFill(List<Object> valores){
         super(valores);
     }
 

@@ -1,5 +1,6 @@
-package Figuras;
+package Figuras.Stroke;
 
+import Figuras.Shape;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.List;

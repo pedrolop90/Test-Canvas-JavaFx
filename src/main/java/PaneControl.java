@@ -1,4 +1,6 @@
 import Figuras.*;
+import Figuras.Fill.CirculoFill;
+import Figuras.Fill.RectanguloFill;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.EventHandler;
@@ -32,7 +34,7 @@ public class PaneControl extends GridPane {
         setVgap(10);
         setHgap(10);
         setPadding(new Insets(10));
-        botones.add(crearBoton("Cuadrado",null,0,0,new RecntanguloFill(),0));
+        botones.add(crearBoton("Cuadrado",null,0,0,new RectanguloFill(),0));
         botones.add(crearBoton("CirculoFill",null,1,0,new CirculoFill(),1));
 
     }
