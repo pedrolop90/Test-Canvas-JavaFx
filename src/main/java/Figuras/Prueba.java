@@ -1,6 +1,7 @@
 package Figuras;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.shape.ArcType;
 
 public class Prueba extends Shape {
 
@@ -16,6 +17,6 @@ public class Prueba extends Shape {
     public void draw(GraphicsContext g) {
         limpiar(g);
         double ang=50;
-        g.fillRoundRect(x.get(),y.get(),w.get(),h.get(),ang,ang);
+        g.fillArc(x.get(),y.get(),w.get(),h.get(),0,180, ArcType.ROUND);
     }
 }

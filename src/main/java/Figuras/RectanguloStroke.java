@@ -2,6 +2,8 @@ package Figuras;
 
 import javafx.scene.canvas.GraphicsContext;
 
+import java.util.List;
+
 public class RectanguloStroke extends Shape{
 
 
@@ -12,6 +14,12 @@ public class RectanguloStroke extends Shape{
     public RectanguloStroke(double x, double y, double width, double height){
         super(x,y,width,height);
     }
+
+
+    public RectanguloStroke(List<Object> valores){
+        super(valores);
+    }
+
 
     @Override
     public void draw(GraphicsContext g) {

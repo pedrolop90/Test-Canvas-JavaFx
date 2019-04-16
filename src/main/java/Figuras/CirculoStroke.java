@@ -2,6 +2,8 @@ package Figuras;
 
 import javafx.scene.canvas.GraphicsContext;
 
+import java.util.List;
+
 public class CirculoStroke extends Shape {
 
     public CirculoStroke(){
@@ -11,6 +13,11 @@ public class CirculoStroke extends Shape {
     public CirculoStroke(double x, double y, double width, double height) {
         super(x, y, width, height);
     }
+
+    public CirculoStroke(List<Object> valores){
+        super(valores);
+    }
+
 
     @Override
     public void draw(GraphicsContext g) {

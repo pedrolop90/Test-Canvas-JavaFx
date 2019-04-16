@@ -1,8 +1,11 @@
 import Figuras.Generico;
-import Figuras.RectanguloEsquinasRedondeadas;
+import Figuras.RectanguloEsquinasRedondeadasFill;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class testFillRectanguloEsquinasRedondeadas extends Application {
 
@@ -11,9 +14,13 @@ public class testFillRectanguloEsquinasRedondeadas extends Application {
     }
 
     public void start(Stage primaryStage) throws Exception {
-        Generico f=new Generico(Generico.RECTANGULO_ESQUINAS_REDONDEADAS,20,20,200,200);
-        RectanguloEsquinasRedondeadas aux=(RectanguloEsquinasRedondeadas)f.getFigura();
-        aux.porcentajeProperty().set(10);
+        List<Object> valores=new ArrayList<>();
+        valores.add(20d);
+        valores.add(20d);
+        valores.add(200d);
+        valores.add(200d);
+        valores.add(30d);
+        Generico f=new Generico(Generico.RECTANGULO_ESQUINAS_REDONDEADAS_FILL,valores);
         ContenedorPrincipal contenedor=new ContenedorPrincipal(800,600,f,false);
         Scene scene=new Scene(contenedor,800,600);
         primaryStage.setScene(scene);

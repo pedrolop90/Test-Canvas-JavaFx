@@ -2,6 +2,8 @@ package Figuras;
 
 import javafx.scene.canvas.GraphicsContext;
 
+import java.util.List;
+
 public class CirculoFill extends Shape {
 
     public CirculoFill(){
@@ -10,6 +12,10 @@ public class CirculoFill extends Shape {
 
     public CirculoFill(double x, double y, double width, double height){
         super(x,y,width,height);
+    }
+
+    public CirculoFill(List<Object> valores){
+        super(valores);
     }
 
     @Override

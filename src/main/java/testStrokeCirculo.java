@@ -3,6 +3,9 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class testStrokeCirculo extends Application {
 
     public static void main(String[] args) {
@@ -10,7 +13,12 @@ public class testStrokeCirculo extends Application {
     }
 
     public void start(Stage primaryStage) throws Exception {
-        Generico f=new Generico(Generico.CIRCULO_STROKE,20,20,200,200);
+        List<Object> valores=new ArrayList<>();
+        valores.add(20d);
+        valores.add(20d);
+        valores.add(200d);
+        valores.add(200d);
+        Generico f=new Generico(Generico.CIRCULO_STROKE,valores);
         ContenedorPrincipal contenedor=new ContenedorPrincipal(800,600,f,false);
         Scene scene=new Scene(contenedor,800,600);
         primaryStage.setScene(scene);

@@ -6,6 +6,8 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.canvas.GraphicsContext;
 
+import java.util.List;
+
 public abstract class Shape {
 
     protected DoubleProperty x=new SimpleDoubleProperty();
@@ -27,6 +29,14 @@ public abstract class Shape {
         this.y.set(y);
         this.w.set(width);
         this.h.set(height);
+    }
+
+    public Shape(List<Object> valores){
+        reiniciar();
+        this.x.set((Double)valores.get(0));
+        this.y.set((Double)valores.get(1));
+        this.w.set((Double)valores.get(2));
+        this.h.set((Double)valores.get(3));
     }
 
     protected void limpiar(GraphicsContext g){
