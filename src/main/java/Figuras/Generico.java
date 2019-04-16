@@ -14,6 +14,8 @@ public class Generico extends Shape{
     public static final Integer RECTANGULO_ESQUINAS_REDONDEADAS_FILL = 5;
     public static final Integer SEMI_CIRCULO = 6;
     public static final Integer TRIANGULO_FILL = 7;
+    public static final Integer CUADRILATERO_CONVEXO = 8;
+    public static final Integer CUADRILATERO_CONCAVO = 9;
 
     private List<Shape> figuras=new ArrayList<>();
 
@@ -26,8 +28,6 @@ public class Generico extends Shape{
             this.figuras.add(buscarFigura(figuras.get(i), posiciones.get(i)));
         }
     }
-
-
     @Override
     public void draw(GraphicsContext g) {
         for (int i = 0; i < figuras.size(); i++) {
@@ -50,6 +50,10 @@ public class Generico extends Shape{
             return new SemiCirculoFill(valores);
         }else if(f == TRIANGULO_FILL){
             return new TrianguloFill(valores);
+        }else if(f == CUADRILATERO_CONVEXO){
+            return new CuadrilateroConvexoFill(valores);
+        }else if(f == CUADRILATERO_CONCAVO){
+            return new CuadrilateroConcavoFill(valores);
         }
         return null;
     }
