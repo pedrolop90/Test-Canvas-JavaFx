@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class testFillCuadrilateroConcavo extends Application {
+public class testStrokeCuadrilateroConcavo extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -29,8 +29,8 @@ public class testFillCuadrilateroConcavo extends Application {
         valores.get(cont).add(100d);
         valores.get(cont).add(0.8d);
         List<Integer> figuras=new ArrayList<>();
-        figuras.add(Generico.CUADRILATERO_CONCAVO_FILL);
-        figuras.add(Generico.CUADRILATERO_CONCAVO_FILL);
+        figuras.add(Generico.CUADRILATERO_CONCAVO_STROKE);
+        figuras.add(Generico.CUADRILATERO_CONCAVO_STROKE);
         Generico f=new Generico(figuras,valores);
         ContenedorPrincipal contenedor=new ContenedorPrincipal(800,600,f,false);
         Scene scene=new Scene(contenedor,800,600);
