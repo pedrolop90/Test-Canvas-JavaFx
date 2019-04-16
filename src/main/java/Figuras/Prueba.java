@@ -1,8 +1,10 @@
 package Figuras;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.shape.ArcType;
 import javafx.scene.shape.FillRule;
+import sun.java2d.pipe.DrawImage;
 
 public class Prueba extends Shape {
 
@@ -17,6 +19,5 @@ public class Prueba extends Shape {
     @Override
     public void draw(GraphicsContext g) {
         limpiar(g);
-        //g.strokeRoundRect();
     }
 }

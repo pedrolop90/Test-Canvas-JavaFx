@@ -25,6 +25,8 @@ public class Generico extends Shape{
     public static final Integer TRIANGULO_STROKE = 12;
     public static final Integer CUADRILATERO_CONVEXO_STROKE = 13;
     public static final Integer CUADRILATERO_CONCAVO_STROKE = 14;
+    //DrawImage
+    public static final Integer DRAWIMAGE = 15;
 
     private List<Shape> figuras=new ArrayList<>();
 
@@ -73,6 +75,8 @@ public class Generico extends Shape{
             return new CuadrilateroConvexoStroke(valores);
         }else if(f == CUADRILATERO_CONCAVO_STROKE){
             return new CuadrilateroConcavoStroke(valores);
+        }else if(f == DRAWIMAGE){
+            return new DrawImage(valores);
         }
         return null;
     }

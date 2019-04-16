@@ -1,4 +1,4 @@
-import Figuras.Generico;
+
 import Figuras.Prueba;
 import javafx.application.Application;
 import javafx.scene.Scene;
