@@ -1,4 +1,4 @@
-import Figuras.Generico;
+import Figuras.ContenedorPrincipal;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -18,8 +18,9 @@ public class testFillRectangulo extends Application {
         valores.add(20d);
         valores.add(200d);
         valores.add(200d);
-        Generico f=new Generico(Generico.RECTANGULO_FILL,valores);
-        ContenedorPrincipal contenedor=new ContenedorPrincipal(800,600,f,false);
+        //Generico f=new Generico(Generico.RECTANGULO_FILL,valores);
+        ContenedorPrincipal contenedor=new ContenedorPrincipal(800,600,false);
+        contenedor.agregarFigura(ContenedorPrincipal.figuraPredeterminada.RECTANGULO_FILL,valores);
         Scene scene=new Scene(contenedor,800,600);
         primaryStage.setScene(scene);
         primaryStage.setX(0);

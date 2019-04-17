@@ -1,4 +1,4 @@
-import Figuras.Generico;
+import Figuras.ContenedorPrincipal;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -19,8 +19,8 @@ public class testDrawImage extends Application {
         valores.add(800d);
         valores.add(400d);
         valores.add("2.jpg");
-        Generico f=new Generico(Generico.DRAWIMAGE,valores);
-        ContenedorPrincipal contenedor=new ContenedorPrincipal(800,600,f,false);
+        //Generico f=new Generico(Generico.DRAWIMAGE,valores);
+        ContenedorPrincipal contenedor=new ContenedorPrincipal(800,600,false);
         Scene scene=new Scene(contenedor,800,600);
         primaryStage.setScene(scene);
         primaryStage.setX(0);

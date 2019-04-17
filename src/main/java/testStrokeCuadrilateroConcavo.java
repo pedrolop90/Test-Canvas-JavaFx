@@ -1,4 +1,4 @@
-import Figuras.Generico;
+import Figuras.ContenedorPrincipal;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -29,10 +29,10 @@ public class testStrokeCuadrilateroConcavo extends Application {
         valores.get(cont).add(100d);
         valores.get(cont).add(0.8d);
         List<Integer> figuras=new ArrayList<>();
-        figuras.add(Generico.CUADRILATERO_CONCAVO_STROKE);
-        figuras.add(Generico.CUADRILATERO_CONCAVO_STROKE);
-        Generico f=new Generico(figuras,valores);
-        ContenedorPrincipal contenedor=new ContenedorPrincipal(800,600,f,false);
+        //figuras.add(Generico.CUADRILATERO_CONCAVO_STROKE);
+        //figuras.add(Generico.CUADRILATERO_CONCAVO_STROKE);
+        //Generico f=new Generico(figuras,valores);
+        ContenedorPrincipal contenedor=new ContenedorPrincipal(800,600,false);
         Scene scene=new Scene(contenedor,800,600);
         primaryStage.setScene(scene);
         primaryStage.setX(0);

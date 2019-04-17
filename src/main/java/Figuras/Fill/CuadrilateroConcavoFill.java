@@ -1,5 +1,6 @@
 package Figuras.Fill;
 
+import Figuras.Polygon;
 import Figuras.Shape;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -7,7 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 import java.util.List;
 
-public class CuadrilateroConcavoFill extends Shape {
+public class CuadrilateroConcavoFill extends Polygon {
 
     private DoubleProperty porcentaje=new SimpleDoubleProperty(0.7);
 

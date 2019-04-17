@@ -1,4 +1,4 @@
-import Figuras.Generico;
+import Figuras.ContenedorPrincipal;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -19,8 +19,8 @@ public class testStrokeRectanguloEsquinasRedondeadas extends Application {
         valores.add(200d);
         valores.add(200d);
         valores.add(30d);
-        Generico f=new Generico(Generico.RECTANGULO_ESQUINAS_REDONDEADAS_STROKE,valores);
-        ContenedorPrincipal contenedor=new ContenedorPrincipal(800,600,f,false);
+        //Generico f=new Generico(Generico.RECTANGULO_ESQUINAS_REDONDEADAS_STROKE,valores);
+        ContenedorPrincipal contenedor=new ContenedorPrincipal(800,600,false);
         Scene scene=new Scene(contenedor,800,600);
         primaryStage.setScene(scene);
         primaryStage.setX(0);

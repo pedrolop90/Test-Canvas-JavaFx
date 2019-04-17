@@ -1,4 +1,4 @@
-import Figuras.Generico;
+import Figuras.ContenedorPrincipal;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.shape.ArcType;
@@ -44,11 +44,14 @@ public class testFillSemiCirculo extends Application {
         valores.get(cont).add(ArcType.CHORD);
         cont++;
         List<Integer> figuras=new ArrayList<>();
-        figuras.add(Generico.SEMI_CIRCULO_FILL);
-        figuras.add(Generico.SEMI_CIRCULO_FILL);
-        figuras.add(Generico.SEMI_CIRCULO_FILL);
-        Generico f=new Generico(figuras,valores);
-        ContenedorPrincipal contenedor=new ContenedorPrincipal(800,600,f,false);
+        //figuras.add(Generico.SEMI_CIRCULO_FILL);
+        //figuras.add(Generico.SEMI_CIRCULO_FILL);
+        //figuras.add(Generico.SEMI_CIRCULO_FILL);
+        //Generico f=new Generico(figuras,valores);
+        ContenedorPrincipal contenedor=new ContenedorPrincipal(800,600,false);
+        contenedor.agregarFigura(ContenedorPrincipal.figuraPredeterminada.SEMICIRCULO_FILL,valores.get(0));
+        contenedor.agregarFigura(ContenedorPrincipal.figuraPredeterminada.SEMICIRCULO_FILL,valores.get(1));
+        contenedor.agregarFigura(ContenedorPrincipal.figuraPredeterminada.SEMICIRCULO_FILL,valores.get(2));
         Scene scene=new Scene(contenedor,800,600);
         primaryStage.setScene(scene);
         primaryStage.setX(0);

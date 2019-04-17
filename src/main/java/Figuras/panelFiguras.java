@@ -1,3 +1,5 @@
+package Figuras;
+
 import Figuras.*;
 import Figuras.Fill.CirculoFill;
 import Figuras.Fill.RectanguloFill;
@@ -14,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class PaneControl extends GridPane {
+public class panelFiguras extends GridPane {
 
     private List<ToggleButton> botones=new ArrayList<>();
     private Map<Integer, Shape> figuras=new TreeMap<>();
@@ -24,7 +26,7 @@ public class PaneControl extends GridPane {
         this.getProperties().put("figura",(Shape)(figuras.get(Integer.parseInt(btn.getId()))));
     };
 
-    public PaneControl(){
+    public panelFiguras(){
         ColumnConstraints col1 = new ColumnConstraints();
         col1.setPercentWidth(50);
         ColumnConstraints col2 = new ColumnConstraints();
@@ -39,7 +41,7 @@ public class PaneControl extends GridPane {
 
     }
 
-    public ToggleButton crearBoton(String nombre, String icon,int x, int y,Shape figura,int num){
+    public ToggleButton crearBoton(String nombre, String icon, int x, int y, Shape figura, int num){
         ToggleButton boton=new ToggleButton();
         if(icon==null){
             boton.setText(nombre);

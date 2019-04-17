@@ -1,11 +1,12 @@
 package Figuras.Fill;
 
+import Figuras.Polygon;
 import Figuras.Shape;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.List;
 
-public class TrianguloFill extends Shape {
+public class TrianguloFill extends Polygon {
 
     public TrianguloFill(){
         super();

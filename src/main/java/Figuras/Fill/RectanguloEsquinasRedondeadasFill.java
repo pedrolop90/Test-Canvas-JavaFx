@@ -1,5 +1,6 @@
 package Figuras.Fill;
 
+import Figuras.Polygon;
 import Figuras.Shape;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -7,7 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 import java.util.List;
 
-public class RectanguloEsquinasRedondeadasFill extends Shape {
+public class RectanguloEsquinasRedondeadasFill extends Polygon {
 
     private DoubleProperty porcentaje=new SimpleDoubleProperty();
 

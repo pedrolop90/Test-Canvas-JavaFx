@@ -1,16 +1,15 @@
 package Figuras.Fill;
 
-import Figuras.Shape;
+import Figuras.Polygon;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.shape.ArcType;
-
 import java.util.List;
 
-public class SemiCirculoFill extends Shape {
+public class SemiCirculoFill extends Polygon {
 
     private DoubleProperty startAngulo=new SimpleDoubleProperty();
     private DoubleProperty arcExtent=new SimpleDoubleProperty();
@@ -34,6 +33,7 @@ public class SemiCirculoFill extends Shape {
         arcExtent.set((Double)valores.get(5));
         arcType.set((ArcType) valores.get(6));
     }
+
 
 
     @Override

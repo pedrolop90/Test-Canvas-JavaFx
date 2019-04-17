@@ -9,8 +9,8 @@ import javafx.scene.canvas.GraphicsContext;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Generico extends Shape{
-
+public class Generico {
+    /*
     //Fill
     public static final Integer RECTANGULO_FILL = 1;
     public static final Integer CIRCULO_FILL = 2;
@@ -91,7 +91,7 @@ public class Generico extends Shape{
         });
     }
 
-    public static Shape buscarFigura(Integer f,@Nullable List<Object> valores){
+    public static Shape buscarFigura(Integer f, @Nullable List<Object> valores){
         if(f == RECTANGULO_FILL){
             return new RectanguloFill(valores);
         }else if(f == CIRCULO_FILL){
@@ -170,5 +170,5 @@ public class Generico extends Shape{
         this.yi.set(yi);
     }
 
-
+*/
 }

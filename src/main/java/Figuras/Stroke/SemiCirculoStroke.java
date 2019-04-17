@@ -1,5 +1,6 @@
 package Figuras.Stroke;
 
+import Figuras.Polygon;
 import Figuras.Shape;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ObjectProperty;
@@ -10,7 +11,7 @@ import javafx.scene.shape.ArcType;
 
 import java.util.List;
 
-public class SemiCirculoStroke extends Shape {
+public class SemiCirculoStroke extends Polygon {
 
     private DoubleProperty startAngulo=new SimpleDoubleProperty();
     private DoubleProperty arcExtent=new SimpleDoubleProperty();

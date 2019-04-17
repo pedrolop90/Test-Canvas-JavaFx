@@ -1,12 +1,13 @@
 package Figuras.Fill;
 
 
+import Figuras.Polygon;
 import Figuras.Shape;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.List;
 
-public class RectanguloFill extends Shape {
+public class RectanguloFill extends Polygon {
 
 
     public RectanguloFill(){

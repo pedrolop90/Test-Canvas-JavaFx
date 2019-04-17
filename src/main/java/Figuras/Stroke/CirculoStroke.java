@@ -1,11 +1,12 @@
 package Figuras.Stroke;
 
+import Figuras.Polygon;
 import Figuras.Shape;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.List;
 
-public class CirculoStroke extends Shape {
+public class CirculoStroke extends Polygon {
 
     public CirculoStroke(){
         super();

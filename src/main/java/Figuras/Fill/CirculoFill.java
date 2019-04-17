@@ -1,11 +1,12 @@
 package Figuras.Fill;
 
+import Figuras.Polygon;
 import Figuras.Shape;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.List;
 
-public class CirculoFill extends Shape {
+public class CirculoFill extends Polygon {
 
     public CirculoFill(){
         super();

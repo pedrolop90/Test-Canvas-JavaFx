@@ -1,11 +1,12 @@
 package Figuras.Stroke;
 
+import Figuras.Polygon;
 import Figuras.Shape;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.List;
 
-public class TrianguloStroke extends Shape {
+public class TrianguloStroke extends Polygon {
 
     public TrianguloStroke(){
         super();

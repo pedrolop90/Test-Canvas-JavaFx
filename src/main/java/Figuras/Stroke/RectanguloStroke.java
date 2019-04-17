@@ -1,11 +1,12 @@
 package Figuras.Stroke;
 
+import Figuras.Polygon;
 import Figuras.Shape;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.List;
 
-public class RectanguloStroke extends Shape {
+public class RectanguloStroke extends Polygon {
 
 
     public RectanguloStroke(){
