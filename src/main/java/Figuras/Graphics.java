@@ -1,6 +1,12 @@
 package Figuras;
 
 import Figuras.Acciones.*;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -14,20 +20,28 @@ import java.util.TreeMap;
 
 public class Graphics extends Canvas {
 
-    private List<Shape> figuras=new ArrayList<>();
+    private ObservableList<Shape> figuras= FXCollections.observableArrayList();
     private SelectionModel selectionModel=new SelectionModel();
-    private Map<Action, ActionHandler> actions=new TreeMap<>();
+    private SelectionAction selectionAction=new SelectionAction(selectionModel);
     private GraphicsContext context=this.getGraphicsContext2D();
+
+    public Graphics(){
+        this(800,600);
+    }
 
     public Graphics(double width,double height){
         this.setWidth(width);
         this.setHeight(height);
         PressedHandler pressedHandler=new PressedHandler();
-        ReleasedHandler releasedHandler=new ReleasedHandler();
-        DraggedHandler draggedHandler=new DraggedHandler();
         setOnMousePressed(pressedHandler);
-        setOnMouseReleased(releasedHandler);
-        setOnMouseDragged(draggedHandler);
+        setOnMouseReleased(new ReleasedHandler());
+        setOnMouseDragged(new DraggedHandler(pressedHandler));
+        figuras.addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                reDraw();
+            }
+        });
     }
 
     public void reDraw(){
@@ -43,6 +57,9 @@ public class Graphics extends Canvas {
 
     private class PressedHandler implements EventHandler<MouseEvent> {
 
+        private DoubleProperty initX=new SimpleDoubleProperty();
+        private DoubleProperty initY=new SimpleDoubleProperty();
+
         @Override
         public void handle(MouseEvent evt) {
             if (evt.getEventType() == MouseEvent.MOUSE_PRESSED) {
@@ -55,16 +72,16 @@ public class Graphics extends Canvas {
                         evt.getX() <= figuras.get(i).getX()+figuras.get(i).getW() &&
                         evt.getY() >= figuras.get(i).getY() &&
                         evt.getY() <= figuras.get(i).getY()+figuras.get(i).getH()) {
-                    selectionModel.getSelectedItems().add(figuras.get(i));
-                    figuras.get(i).selectedProperty().set(true);
-                    actions.put(Action.SELECTION,new SelectionHanlder(selectionModel));
+                    selectionModel.selected(figuras.get(i));
+                    selectionAction.setContext(Action.SELECTION);
+                    initX.set(evt.getX());
+                    initY.set(evt.getY());
                     break;
-                }
-                if(figuras.get(i).selectedResize(evt.getX(),evt.getY())){
-                    selectionModel.getSelectedItems().add(figuras.get(i));
-                    figuras.get(i).selectedProperty().set(true);
-                    actions.put(Action.SELECTION,new SelectionHanlder(selectionModel));
-                    actions.put(Action.RESIZE,new ResizeHandler(selectionModel));
+                }else if(figuras.get(i).selectedResize(evt.getX(),evt.getY())){
+                    selectionModel.selected(figuras.get(i));
+                    selectionAction.setContext(Action.RESIZE);
+                    initX.set(evt.getX());
+                    initY.set(evt.getY());
                     break;
                 }
             }
@@ -76,6 +93,20 @@ public class Graphics extends Canvas {
 
         private double deltaX=0;
         private double deltaY=0;
+        private PressedHandler pressedHandler;
+
+        public DraggedHandler(PressedHandler pressedHandler){
+            this.pressedHandler=pressedHandler;
+            pressedHandler.initX.addListener(observable -> {
+                deltaX=0;
+                deltaY=0;
+                for (int i = 0; i < selectionModel.getSelectedItems().size(); i++) {
+                    deltaX=pressedHandler.initX.get()-selectionModel.getSelectedItems().get(i).getX();
+                    deltaY=pressedHandler.initY.get()-selectionModel.getSelectedItems().get(i).getY();
+                }
+            });
+
+        }
 
         @Override
         public void handle(MouseEvent evt) {
@@ -83,21 +114,13 @@ public class Graphics extends Canvas {
                 handleMouseDragged(evt);
             }
         }
+
         public void handleMouseDragged(MouseEvent evt) {
             if(selectionModel.getSelectedItems().size()>0){
-                if(actions.containsKey(Action.SELECTION)){
-                    if(actions.containsKey(Action.RESIZE)){
-                        actions.get(Action.RESIZE).calcularCambio(evt.getX(),evt.getY(),0,0);
+                if(selectionAction.getContext()== Action.RESIZE){
+                    selectionAction.getActions().get(Action.RESIZE).calcularCambio(evt.getX(),evt.getY(),0,0);
                     }else{
-                       if(!actions.containsKey(Action.MOVE)){
-                            actions.put(Action.MOVE,new MoveHanlder(selectionModel));
-                           for (int i = 0; i < selectionModel.getSelectedItems().size(); i++) {
-                               deltaX=evt.getX()-selectionModel.getSelectedItems().get(i).getX();
-                               deltaY=evt.getY()-selectionModel.getSelectedItems().get(i).getY();
-                           }
-                       }
-                       actions.get(Action.MOVE).calcularCambio(evt.getX(),evt.getY(),deltaX,deltaY);
-                    }
+                    selectionAction.getActions().get(Action.MOVE).calcularCambio(evt.getX(),evt.getY(),deltaX,deltaY);
                 }
                 reDraw();
             }
@@ -118,13 +141,16 @@ public class Graphics extends Canvas {
                 shape.selectedProperty().set(false);
             });
             selectionModel.getSelectedItems().clear();
-            actions.clear();
+            selectionAction.setContext(null);
         }
     }
 
-    public void agregarFigura(Shape f){
-        figuras.add(f);
-        reDraw();
+
+    public ObservableList<Shape> getFiguras() {
+        return figuras;
     }
 
+    public void setFiguras(ObservableList<Shape> figuras) {
+        this.figuras = figuras;
+    }
 }

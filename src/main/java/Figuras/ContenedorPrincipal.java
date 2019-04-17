@@ -28,10 +28,10 @@ public class ContenedorPrincipal extends SplitPane {
     public void agregarFigura(figuraPredeterminada f, List<Object> valores){
         switch(f){
             case RECTANGULO_FILL:
-                canvas.agregarFigura(new RectanguloFill(valores));
+                canvas.getFiguras().add(new RectanguloFill(valores));
                 break;
             case SEMICIRCULO_FILL:
-                canvas.agregarFigura(new SemiCirculoFill(valores));
+                canvas.getFiguras().add(new SemiCirculoFill(valores));
                 break;
         }
     }

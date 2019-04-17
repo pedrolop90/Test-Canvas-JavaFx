@@ -2,6 +2,8 @@ package Figuras;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +11,7 @@ import java.util.List;
 public class SelectionModel {
 
     private ObjectProperty<SelectionMode> selectionMode=new SimpleObjectProperty<>(SelectionMode.SINGLE);
-    private List<Shape> selectedItems=new ArrayList<>();
+    private ObservableList<Shape> selectedItems= FXCollections.observableArrayList();
 
     public SelectionModel(){
 
@@ -27,11 +29,13 @@ public class SelectionModel {
         this.selectionMode.set(selectionMode);
     }
 
-    public List<Shape> getSelectedItems() {
+    public ObservableList<Shape> getSelectedItems() {
         return selectedItems;
     }
 
-    public void setSelectedItems(List<Shape> selectedItems) {
-        this.selectedItems = selectedItems;
+    public void selected(Shape s){
+        selectedItems.add(s);
+        s.setSelected(true);
     }
+
 }

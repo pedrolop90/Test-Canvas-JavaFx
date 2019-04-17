@@ -5,7 +5,7 @@ public enum Action {
     MOVE(),
     RESIZE(),
     RESIZE_X(),
-    RESIZE_y(),
+    RESIZE_Y(),
     SELECTION();
 
 }
