@@ -55,13 +55,15 @@ public abstract class Shape {
         if(xi>=x.get()+w.get()&&xi<=x.get()+w.get()+tamañoCuadroEsquina.get()&&
                 yi>=y.get()+h.get()&&yi<=y.get()+h.get()+tamañoCuadroEsquina.get()){
             return true;
-        }else if(xi>=x.get()+w.get()-20 && xi<=x.get()+w.get()+tamañoCuadroEsquina.get()+10&&
+        }
+        /*else if(xi>=x.get()+w.get()-20 && xi<=x.get()+w.get()+tamañoCuadroEsquina.get()+10&&
                 yi>=y.get()+(h.get()/2)-20 && yi<=y.get()+(h.get()/2)+tamañoCuadroEsquina.get()+10){
             return true;
         }else if(xi>=x.get()+(w.get()/2)-20 && xi<=x.get()+(w.get()/2)+tamañoCuadroEsquina.get()+10&&
                 yi>=y.get()+h.get()-20 && yi<=y.get()+h.get()+tamañoCuadroEsquina.get()+10){
             return true;
         }
+        */
         return false;
     }
 

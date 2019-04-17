@@ -1,7 +1,6 @@
 package Figuras;
 
-import Figuras.Acciones.Action;
-import Figuras.Acciones.ActionHandler;
+import Figuras.Acciones.*;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -58,17 +57,14 @@ public class Graphics extends Canvas {
                         evt.getY() <= figuras.get(i).getY()+figuras.get(i).getH()) {
                     selectionModel.getSelectedItems().add(figuras.get(i));
                     figuras.get(i).selectedProperty().set(true);
-                    Action.SELECTION.getActionHandler().setSelectionModel(selectionModel);
-                    actions.put(Action.SELECTION,Action.SELECTION.getActionHandler());
+                    actions.put(Action.SELECTION,new SelectionHanlder(selectionModel));
                     break;
                 }
                 if(figuras.get(i).selectedResize(evt.getX(),evt.getY())){
                     selectionModel.getSelectedItems().add(figuras.get(i));
                     figuras.get(i).selectedProperty().set(true);
-                    Action.SELECTION.getActionHandler().setSelectionModel(selectionModel);
-                    actions.put(Action.SELECTION,Action.SELECTION.getActionHandler());
-                    Action.RESIZE.getActionHandler().setSelectionModel(selectionModel);
-                    actions.put(Action.RESIZE,Action.RESIZE.getActionHandler());
+                    actions.put(Action.SELECTION,new SelectionHanlder(selectionModel));
+                    actions.put(Action.RESIZE,new ResizeHandler(selectionModel));
                     break;
                 }
             }
@@ -94,8 +90,7 @@ public class Graphics extends Canvas {
                         actions.get(Action.RESIZE).calcularCambio(evt.getX(),evt.getY(),0,0);
                     }else{
                        if(!actions.containsKey(Action.MOVE)){
-                            Action.MOVE.getActionHandler().setSelectionModel(selectionModel);
-                            actions.put(Action.MOVE,Action.MOVE.getActionHandler());
+                            actions.put(Action.MOVE,new MoveHanlder(selectionModel));
                            for (int i = 0; i < selectionModel.getSelectedItems().size(); i++) {
                                deltaX=evt.getX()-selectionModel.getSelectedItems().get(i).getX();
                                deltaY=evt.getY()-selectionModel.getSelectedItems().get(i).getY();
