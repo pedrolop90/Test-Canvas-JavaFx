@@ -27,7 +27,6 @@ public class DrawImage extends Shape {
 
     @Override
     public void draw(GraphicsContext g) {
-        limpiar(g);
         g.drawImage(new Image(url.get()),x.get(),y.get(),w.get(),h.get());
     }
 

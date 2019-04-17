@@ -23,7 +23,6 @@ public class RectanguloFill extends Shape {
 
     @Override
     public void draw(GraphicsContext g) {
-        limpiar(g);
         g.fillRect(x.get(),y.get(),w.get(),h.get());
     }
 }

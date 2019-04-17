@@ -29,7 +29,6 @@ public class RectanguloEsquinasRedondeadasStroke extends Shape {
 
     @Override
     public void draw(GraphicsContext g) {
-        limpiar(g);
         double ang=(porcentaje.getValue()*w.get())/100;
         g.strokeRoundRect(x.get(),y.get(),w.get(),h.get(),ang,ang);
     }

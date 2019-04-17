@@ -21,7 +21,6 @@ public class TrianguloStroke extends Shape {
 
     @Override
     public void draw(GraphicsContext g) {
-        limpiar(g);
         double[] vectX={x.get(),x.get()+w.get(),(x.get()+w.get())/2};
         double[] vectY={y.get()+h.get(),y.get()+h.get(),y.get()};
         g.strokePolygon(vectX,vectY,3);

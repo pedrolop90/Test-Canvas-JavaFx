@@ -26,7 +26,6 @@ public class CuadrilateroConvexoStroke extends Shape {
 
     @Override
     public void draw(GraphicsContext g) {
-        limpiar(g);
         double por=w.getValue()*porcentaje.get();
         double pointXF=x.get()+w.get();
         double pointYF=y.get()+h.get();

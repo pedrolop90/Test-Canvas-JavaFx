@@ -39,7 +39,6 @@ public class SemiCirculoStroke extends Shape {
 
     @Override
     public void draw(GraphicsContext g) {
-        limpiar(g);
         g.strokeArc(x.get(),y.get(),w.get(),h.get(),startAngulo.getValue(),arcExtent.getValue(), arcType.get());
     }
 

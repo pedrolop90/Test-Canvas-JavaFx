@@ -7,95 +7,148 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
 public class CanvasTest extends Canvas {
 
-    private ObjectProperty<Shape> accionActual=new SimpleObjectProperty<Shape>();
-    private List<Shape> figuras=new ArrayList<>();
-    private Map<Integer,List<Shape>> colisiones=new TreeMap<>();
+    private ObjectProperty<Shape> figuraSeleccionada =new SimpleObjectProperty<>();
     private GraphicsContext context=getGraphicsContext2D();
-    private SelectionHandler selectionHandler;
-    private IntegerProperty contador=new SimpleIntegerProperty(0);
+    private SelectionHandler selectionHandler=new SelectionHandler();
+
+    public CanvasTest(double width,double height){
+        super();
+        setWidth(width);
+        setHeight(height);
+        figuraSeleccionada.set(new Generico());
+        init();
+        render();
+    }
 
     public CanvasTest(double width, double height,Shape accion){
         super();
-        this.setWidth(width);
-        this.setHeight(height);
-        accionActual.set(accion);
-        selectionHandler= new SelectionHandler();
-        this.setOnMousePressed(selectionHandler);
-        this.setOnMouseMoved(selectionHandler);
-            accionActual.get().xProperty().bindBidirectional(selectionHandler.x);
-            accionActual.get().yProperty().bindBidirectional(selectionHandler.y);
-            accionActual.get().wProperty().bindBidirectional(selectionHandler.w);
-            accionActual.get().hProperty().bindBidirectional(selectionHandler.h);
+        setWidth(width);
+        setHeight(height);
+        figuraSeleccionada.set(accion);
+        init();
         render();
     }
 
     public void render(){
         context.setFill(Color.BLUE);
-        if(accionActual.get()!=null) {
-            accionActual.get().draw(context);
-        }
+        figuraSeleccionada.get().draw(context);
     }
 
-    public ObjectProperty<Shape> getAccionActual(){
-        return accionActual;
+    public ObjectProperty<Shape> getFiguraSeleccionada(){
+        return figuraSeleccionada;
     }
     private class SelectionHandler implements EventHandler<MouseEvent> {
+
         public DoubleProperty x = new SimpleDoubleProperty(-1);
         public DoubleProperty y = new SimpleDoubleProperty(-1);
         public DoubleProperty w = new SimpleDoubleProperty(-1);
         public DoubleProperty h = new SimpleDoubleProperty(-1);
-        private boolean activo=false;
+        public DoubleProperty xi=new SimpleDoubleProperty(-1);
+        public DoubleProperty yi=new SimpleDoubleProperty(-1);
+        public BooleanProperty estadoFigura=new SimpleBooleanProperty(false);
+        public ObjectProperty<Shape.TipoAccion> accionFigura=new SimpleObjectProperty<>();
+        private double wMax=-1;
+        private double hMax=-1;
+
         @Override
         public void handle(MouseEvent evt) {
             if (evt.getEventType() == MouseEvent.MOUSE_MOVED) {
                 handleMouseMoved(evt);
-            }
-            else if (evt.getEventType() == MouseEvent.MOUSE_PRESSED) {
+            }else if (evt.getEventType() == MouseEvent.MOUSE_PRESSED) {
                 handleMousePressed(evt);
+            }else if (evt.getEventType() == MouseEvent.MOUSE_RELEASED) {
+                handleMouseReleased(evt);
+            }else if (evt.getEventType() == MouseEvent.MOUSE_DRAGGED) {
+                handleMouseDragged(evt);
             }
         }
 
         public void handleMouseMoved(MouseEvent evt){
-            if(activo){
-                w.set(evt.getX()- x.get());
-                h.set(evt.getY()- y.get());
+        }
+
+        public void handleMouseDragged(MouseEvent evt){
+            if(estadoFigura.get()) {
+                switch (accionFigura.get()) {
+                    case MOVE:
+                        x.set(evt.getX() - wMax);
+                        y.set(evt.getY() - hMax);
+                        break;
+                    case RESIZE_EXTREME:
+                        w.set(evt.getX()-x.get());
+                        h.set(evt.getY()-y.get());
+                        break;
+                    case RESIZE_CENTRO_X:
+                        w.set(evt.getX()-x.get());
+                        break;
+                    case RESIZE_CENTRO_Y:
+                        h.set(evt.getY()-y.get());
+                        break;
+                    case CREATE:
+                        break;
+                }
+                xi.set(evt.getX());
+                yi.set(evt.getY());
                 render();
             }
         }
         public void handleMousePressed(MouseEvent evt){
-            if(false) {
-                if (!activo) {
-                    x.set(evt.getX());
-                    y.set(evt.getY());
-                    w.set(-1);
-                    h.set(-1);
-                    activo = true;
-                } else if (activo && w.get() != -1 && h.get() != -1) {
-                    w.set(evt.getX() - x.get());
-                    h.set(evt.getY() - y.get());
-                    activo = false;
+            xi.set(evt.getX());
+            yi.set(evt.getY());
+            render();
+            if (estadoFigura.get()) {
+                switch (accionFigura.get()) {
+                    case MOVE:
+                            wMax = evt.getX() - x.get();
+                            hMax = evt.getY() - y.get();
+                        break;
+                    case RESIZE_EXTREME:
+                        break;
+                    case RESIZE_CENTRO_X:
+                        break;
+                    case RESIZE_CENTRO_Y:
+                        break;
+                    case CREATE:
+                        break;
                 }
-                render();
             }
-            x.set(evt.getX());
-            y.set(evt.getY());
+        }
+
+        public void handleMouseReleased(MouseEvent evt){
+            if(estadoFigura.get()) {
+                switch (accionFigura.get()) {
+                    case MOVE:
+                        break;
+                    case RESIZE_EXTREME:
+                        break;
+                    case RESIZE_CENTRO_X:
+                        break;
+                    case RESIZE_CENTRO_Y:
+                        break;
+                    case CREATE:
+                        break;
+                }
+                estadoFigura.set(false);
+            }
             render();
         }
 
-        public void reiniciar(){
-            x.set(-1);
-            y.set(-1);
-            w.set(-1);
-            h.set(-1);
-            activo=false;
-        }
+    }
+
+    private void init(){
+        setOnMousePressed(selectionHandler);
+        setOnMouseReleased(selectionHandler);
+        setOnMouseMoved(selectionHandler);
+        setOnMouseDragged(selectionHandler);
+        figuraSeleccionada.get().xProperty().bindBidirectional(selectionHandler.x);
+        figuraSeleccionada.get().yProperty().bindBidirectional(selectionHandler.y);
+        figuraSeleccionada.get().xiProperty().bindBidirectional(selectionHandler.xi);
+        figuraSeleccionada.get().yiProperty().bindBidirectional(selectionHandler.yi);
+        figuraSeleccionada.get().wProperty().bindBidirectional(selectionHandler.w);
+        figuraSeleccionada.get().hProperty().bindBidirectional(selectionHandler.h);
+        figuraSeleccionada.get().estadoFiguraProperty().bindBidirectional(selectionHandler.estadoFigura);
+        figuraSeleccionada.get().accionFigura.bindBidirectional(selectionHandler.accionFigura);
     }
 
 }

@@ -26,7 +26,6 @@ public class CuadrilateroConcavoFill extends Shape {
 
     @Override
     public void draw(GraphicsContext g) {
-        limpiar(g);
         double por=h.getValue()*porcentaje.get();
         double pointXF=x.get()+w.get();
         double pointYF=y.get()+h.get();

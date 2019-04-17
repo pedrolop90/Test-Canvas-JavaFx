@@ -21,7 +21,6 @@ public class CirculoFill extends Shape {
 
     @Override
     public void draw(GraphicsContext g) {
-        limpiar(g);
         g.fillOval(x.get(),y.get(),w.get(),h.get());
     }
 

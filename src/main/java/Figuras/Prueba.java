@@ -19,7 +19,6 @@ public class Prueba extends Shape {
 
     @Override
     public void draw(GraphicsContext g) {
-        limpiar(g);
         Box box=new Box();
     }
 }

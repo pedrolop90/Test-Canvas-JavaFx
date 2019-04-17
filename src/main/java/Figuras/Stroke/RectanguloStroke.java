@@ -24,7 +24,6 @@ public class RectanguloStroke extends Shape {
 
     @Override
     public void draw(GraphicsContext g) {
-        limpiar(g);
         g.strokeRect(x.get(),y.get(),w.get(),h.get());
     }
 }

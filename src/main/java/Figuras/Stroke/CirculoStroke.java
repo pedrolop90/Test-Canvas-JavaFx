@@ -22,7 +22,6 @@ public class CirculoStroke extends Shape {
 
     @Override
     public void draw(GraphicsContext g) {
-        limpiar(g);
         g.strokeOval(x.get(),y.get(),w.get(),h.get());
     }
 }
