@@ -68,6 +68,7 @@ public class Graphics extends Canvas {
         }
         public void handleMousePressed(MouseEvent evt) {
             for (int i = 0; i < figuras.size(); i++) {
+                int prov=figuras.get(i).selectedResize(evt.getX(),evt.getY());
                 if (evt.getX() >= figuras.get(i).getX() &&
                         evt.getX() <= figuras.get(i).getX()+figuras.get(i).getW() &&
                         evt.getY() >= figuras.get(i).getY() &&
@@ -77,7 +78,8 @@ public class Graphics extends Canvas {
                     initX.set(evt.getX());
                     initY.set(evt.getY());
                     break;
-                }else if(figuras.get(i).selectedResize(evt.getX(),evt.getY())){
+                }else if(prov!=-1){
+                    selectionModel.getEsquina()[prov]=true;
                     selectionModel.selected(figuras.get(i));
                     selectionAction.setContext(Action.RESIZE);
                     initX.set(evt.getX());
@@ -142,6 +144,9 @@ public class Graphics extends Canvas {
             selectionModel.getSelectedItems().forEach(shape -> {
                 shape.selectedProperty().set(false);
             });
+            for (int i = 0; i < selectionModel.getEsquina().length; i++) {
+                selectionModel.getEsquina()[i]=false;
+            }
             selectionModel.getSelectedItems().clear();
             selectionAction.setContext(null);
         }

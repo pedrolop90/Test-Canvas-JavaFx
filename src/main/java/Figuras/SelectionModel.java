@@ -1,6 +1,8 @@
 package Figuras;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +14,7 @@ public class SelectionModel {
 
     private ObjectProperty<SelectionMode> selectionMode=new SimpleObjectProperty<>(SelectionMode.SINGLE);
     private ObservableList<Shape> selectedItems= FXCollections.observableArrayList();
+    private boolean[] esquina=new boolean[8];
 
 
     public SelectionModel(){
@@ -39,4 +42,11 @@ public class SelectionModel {
         s.setSelected(true);
     }
 
+    public boolean[] getEsquina() {
+        return esquina;
+    }
+
+    public void setEsquina(boolean[] esquina) {
+        this.esquina = esquina;
+    }
 }

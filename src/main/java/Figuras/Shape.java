@@ -51,20 +51,48 @@ public abstract class Shape {
     }
 
 
-    public boolean selectedResize(double xi, double yi){
-        if(xi>=x.get()+w.get()&&xi<=x.get()+w.get()+tamañoCuadroEsquina.get()&&
-                yi>=y.get()+h.get()&&yi<=y.get()+h.get()+tamañoCuadroEsquina.get()){
-            return true;
+    public Integer selectedResize(double xi, double yi){
+        //esquina superior izquierda
+        if(xi>=x.get()-20 && xi<=x.get()+tamañoCuadroEsquina.get()+10&&
+                yi>=y.get()-20 && yi<=y.get()+tamañoCuadroEsquina.get()+10){
+            return 0;
         }
-        /*else if(xi>=x.get()+w.get()-20 && xi<=x.get()+w.get()+tamañoCuadroEsquina.get()+10&&
+        //centro norte
+        else if(xi>=x.get()+(w.get()/2)-20 && xi<=x.get()+(w.get()/2)+tamañoCuadroEsquina.get()+10&&
+                yi>=y.get()-20 && yi<=y.get()+tamañoCuadroEsquina.get()+10){
+            return 1;
+        }
+        //esquina superior derecha
+        else if(xi>=x.get()+w.get()-20 && xi<=x.get()+w.get()+tamañoCuadroEsquina.get()+10&&
+                yi>=y.get()-20 && yi<=y.get()+tamañoCuadroEsquina.get()+10){
+            return 2;
+        }
+        //centro derecha
+        else if(xi>=x.get()+w.get()-20 && xi<=x.get()+w.get()+tamañoCuadroEsquina.get()+10&&
                 yi>=y.get()+(h.get()/2)-20 && yi<=y.get()+(h.get()/2)+tamañoCuadroEsquina.get()+10){
-            return true;
-        }else if(xi>=x.get()+(w.get()/2)-20 && xi<=x.get()+(w.get()/2)+tamañoCuadroEsquina.get()+10&&
-                yi>=y.get()+h.get()-20 && yi<=y.get()+h.get()+tamañoCuadroEsquina.get()+10){
-            return true;
+            return 3;
         }
-        */
-        return false;
+        //esquina inferior derecha
+        else if(xi>=x.get()+w.get()&&xi<=x.get()+w.get()+tamañoCuadroEsquina.get()&&
+                yi>=y.get()+h.get()&&yi<=y.get()+h.get()+tamañoCuadroEsquina.get()){
+            return 4;
+        }
+        //centro sur
+        else if(xi>=x.get()+(w.get()/2)-20 && xi<=x.get()+(w.get()/2)+tamañoCuadroEsquina.get()+10&&
+                yi>=y.get()+h.get()-20 && yi<=y.get()+h.get()+tamañoCuadroEsquina.get()+10){
+            return 5;
+        }
+        //esquina inferior izquierda
+        else if(xi>=x.get()-tamañoCuadroEsquina.get()-20&&xi<=x.get()+tamañoCuadroEsquina.get()&&
+                yi>=y.get()+h.get()&&yi<=y.get()+h.get()+tamañoCuadroEsquina.get()){
+            return 6;
+        }
+        //centro izquierda
+        else if(xi>=x.get()-20 && xi<=x.get()+tamañoCuadroEsquina.get()+10&&
+                yi>=y.get()+(h.get()/2)-20 && yi<=y.get()+(h.get()/2)+tamañoCuadroEsquina.get()+10){
+            return 7;
+        }
+        return -1;
     }
 
 
