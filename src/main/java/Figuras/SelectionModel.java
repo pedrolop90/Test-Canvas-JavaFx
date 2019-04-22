@@ -13,6 +13,7 @@ public class SelectionModel {
     private ObjectProperty<SelectionMode> selectionMode=new SimpleObjectProperty<>(SelectionMode.SINGLE);
     private ObservableList<Shape> selectedItems= FXCollections.observableArrayList();
 
+
     public SelectionModel(){
 
     }

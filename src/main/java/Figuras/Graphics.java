@@ -98,10 +98,12 @@ public class Graphics extends Canvas {
         public DraggedHandler(PressedHandler pressedHandler){
             this.pressedHandler=pressedHandler;
             pressedHandler.initX.addListener(observable -> {
-                deltaX=0;
-                deltaY=0;
                 for (int i = 0; i < selectionModel.getSelectedItems().size(); i++) {
                     deltaX=pressedHandler.initX.get()-selectionModel.getSelectedItems().get(i).getX();
+                }
+            });
+            pressedHandler.initY.addListener(observable -> {
+                for (int i = 0; i < selectionModel.getSelectedItems().size(); i++) {
                     deltaY=pressedHandler.initY.get()-selectionModel.getSelectedItems().get(i).getY();
                 }
             });

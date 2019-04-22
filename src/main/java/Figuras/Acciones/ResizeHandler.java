@@ -14,11 +14,18 @@ public class ResizeHandler implements ActionHandler {
     @Override
     public void calcularCambio(double x, double y, double deltaX,double deltaY) {
         //TODO
-        for (int i = 0; i < selectionModel.getSelectedItems().size(); i++) {
-            Shape f=selectionModel.getSelectedItems().get(i);
-            selectionModel.getSelectedItems().get(i).setW(x-f.getX());
-            selectionModel.getSelectedItems().get(i).setH(y-f.getY());
-        }
+        Shape f=selectionModel.getSelectedItems().get(0);
+        resizeEsquinaInferiorDerecha(x,y,deltaX,deltaY,f);
+
+    }
+
+    private void resizecentroDerecha(double x,double y,double deltaX,double deltaY,Shape f){
+
+    }
+
+    private void resizeEsquinaInferiorDerecha(double x,double y,double deltaX,double deltaY,Shape f){
+        selectionModel.getSelectedItems().get(0).setW(x-f.getX());
+        selectionModel.getSelectedItems().get(0).setH(y-f.getY());
     }
 
     public SelectionModel getSelectionModel() {
