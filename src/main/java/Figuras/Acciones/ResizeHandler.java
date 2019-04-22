@@ -41,12 +41,17 @@ public class ResizeHandler implements ActionHandler {
         }
     }
 
-
     private void resizeEsquinaSuperiorIzquierda(double x,double y,double deltaX,double deltaY,Shape f){
         if(f.getW()<0){
             selectionModel.getEsquina()[2]=true;
             selectionModel.getEsquina()[0]=false;
             resizeEsquinaSuperiorDerecha(x,y,deltaX,deltaY,f);
+            return;
+        }
+        if(f.getH()<0){
+            selectionModel.getEsquina()[6]=true;
+            selectionModel.getEsquina()[0]=false;
+            resizeEsquinaInferiorIzquierda(x,y,deltaX,deltaY,f);
             return;
         }
         resizeCentroIzquierda(x,y,deltaX,deltaY,f);
@@ -61,6 +66,12 @@ public class ResizeHandler implements ActionHandler {
             resizeEsquinaSuperiorIzquierda(x,y,deltaX,deltaY,f);
             return;
         }
+        if(f.getH()<0){
+            selectionModel.getEsquina()[4]=true;
+            selectionModel.getEsquina()[2]=false;
+            resizeEsquinaInferiorDerecha(x,y,deltaX,deltaY,f);
+            return;
+        }
         resizeCentroDerecha(x,y,deltaX,deltaY,f);
         resizeCentroNorte(x,y,deltaX,deltaY,f);
     }
@@ -71,6 +82,12 @@ public class ResizeHandler implements ActionHandler {
             selectionModel.getEsquina()[6]=true;
             selectionModel.getEsquina()[4]=false;
             resizeEsquinaInferiorIzquierda(x,y,deltaX,deltaY,f);
+            return;
+        }
+        if(y<f.getY()){
+            selectionModel.getEsquina()[2]=true;
+            selectionModel.getEsquina()[4]=false;
+            resizeEsquinaSuperiorDerecha(x,y,deltaX,deltaY,f);
             return;
         }
         resizeCentroDerecha(x,y,deltaX,deltaY,f);
@@ -84,9 +101,16 @@ public class ResizeHandler implements ActionHandler {
             resizeEsquinaInferiorDerecha(x,y,deltaX,deltaY,f);
             return;
         }
+        if(y<f.getY()){
+            selectionModel.getEsquina()[0]=true;
+            selectionModel.getEsquina()[6]=false;
+            resizeEsquinaSuperiorIzquierda(x,y,deltaX,deltaY,f);
+            return;
+        }
         resizeCentroIzquierda(x,y,deltaX,deltaY,f);
         resizeCentroSur(x,y,deltaX,deltaY,f);
     }
+
 
     private void resizeCentroDerecha(double x,double y,double deltaX,double deltaY,Shape f){
         if(x<f.getX()){
