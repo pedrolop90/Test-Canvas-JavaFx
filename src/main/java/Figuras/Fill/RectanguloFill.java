@@ -26,4 +26,5 @@ public class RectanguloFill extends Polygon {
     public void draw(GraphicsContext g) {
         g.fillRect(x.get(),y.get(),w.get(),h.get());
     }
+
 }

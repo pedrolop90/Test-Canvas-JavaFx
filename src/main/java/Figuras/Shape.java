@@ -3,6 +3,8 @@ package Figuras;
 import javafx.beans.property.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.StrokeLineCap;
+import javafx.scene.shape.StrokeLineJoin;
 
 import java.util.List;
 
@@ -38,6 +40,10 @@ public abstract class Shape {
         g.setFill(Color.RED);
         double tamX=tamañoCuadroEsquina.doubleValue();
         double tamY=tamañoCuadroEsquina.doubleValue();
+        g.setStroke(Color.RED);
+        g.setLineDashes(5);
+        g.setLineJoin(StrokeLineJoin.ROUND);
+        g.strokeRect(x.get()-tamX/2,y.get()-tamY/2,w.get()+tamX,h.get()+tamY);
         //Esquinas
         g.fillRect(x.get()-tamX,y.get()-tamY,tamX,tamY);
         g.fillRect(x.get()+w.get(),y.get()-tamY,tamX,tamY);
@@ -179,15 +185,4 @@ public abstract class Shape {
         this.tamañoCuadroEsquina.set(tamañoCuadroEsquina);
     }
 
-    @Override
-    public String toString() {
-        return "Shape{" +
-                "x=" + x +
-                ", y=" + y +
-                ", w=" + w +
-                ", h=" + h +
-                ", selected=" + selected +
-                ", tamañoCuadroEsquina=" + tamañoCuadroEsquina +
-                '}';
-    }
 }

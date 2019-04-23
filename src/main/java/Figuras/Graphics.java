@@ -8,15 +8,11 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
+import javafx.scene.Cursor;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class Graphics extends Canvas {
 
@@ -77,6 +73,7 @@ public class Graphics extends Canvas {
                     selectionAction.setContext(Action.SELECTION);
                     initX.set(evt.getX());
                     initY.set(evt.getY());
+                    getScene().setCursor(Cursor.MOVE);
                     break;
                 }else if(prov!=-1){
                     selectionModel.getEsquina()[prov]=true;
@@ -92,11 +89,9 @@ public class Graphics extends Canvas {
     }
 
     private class DraggedHandler implements EventHandler<MouseEvent> {
-
         private double deltaX=0;
         private double deltaY=0;
         private PressedHandler pressedHandler;
-
         public DraggedHandler(PressedHandler pressedHandler){
             this.pressedHandler=pressedHandler;
             pressedHandler.initX.addListener(observable -> {

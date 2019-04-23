@@ -14,30 +14,32 @@ public class ResizeHandler implements ActionHandler {
     @Override
     public void calcularCambio(double x, double y, double deltaX,double deltaY) {
         //TODO
-        Shape f=selectionModel.getSelectedItems().get(0);
-        if(selectionModel.getEsquina()[0]){
-            resizeEsquinaSuperiorIzquierda(x,y,deltaX,deltaY,f);
-        }
-        if(selectionModel.getEsquina()[1]){
-            resizeCentroNorte(x,y,deltaX,deltaY,f);
-        }
-        if(selectionModel.getEsquina()[2]){
-            resizeEsquinaSuperiorDerecha(x,y,deltaX,deltaY,f);
-        }
-        if(selectionModel.getEsquina()[3]){
-            resizeCentroDerecha(x,y,deltaX,deltaY,f);
-        }
-        if(selectionModel.getEsquina()[4]){
-            resizeEsquinaInferiorDerecha(x,y,deltaX,deltaY,f);
-        }
-        if(selectionModel.getEsquina()[5]){
-            resizeCentroSur(x,y,deltaX,deltaY,f);
-        }
-        if(selectionModel.getEsquina()[6]){
-            resizeEsquinaInferiorIzquierda(x,y,deltaX,deltaY,f);
-        }
-        if(selectionModel.getEsquina()[7]){
-            resizeCentroIzquierda(x,y,deltaX,deltaY,f);
+        for (int i = 0; i < selectionModel.getSelectedItems().size(); i++) {
+            Shape f=selectionModel.getSelectedItems().get(i);
+            if(selectionModel.getEsquina()[0]){
+                resizeEsquinaSuperiorIzquierda(x,y,deltaX,deltaY,f);
+            }
+            if(selectionModel.getEsquina()[1]){
+                resizeCentroNorte(x,y,deltaX,deltaY,f);
+            }
+            if(selectionModel.getEsquina()[2]){
+                resizeEsquinaSuperiorDerecha(x,y,deltaX,deltaY,f);
+            }
+            if(selectionModel.getEsquina()[3]){
+                resizeCentroDerecha(x,y,deltaX,deltaY,f);
+            }
+            if(selectionModel.getEsquina()[4]){
+                resizeEsquinaInferiorDerecha(x,y,deltaX,deltaY,f);
+            }
+            if(selectionModel.getEsquina()[5]){
+                resizeCentroSur(x,y,deltaX,deltaY,f);
+            }
+            if(selectionModel.getEsquina()[6]){
+                resizeEsquinaInferiorIzquierda(x,y,deltaX,deltaY,f);
+            }
+            if(selectionModel.getEsquina()[7]){
+                resizeCentroIzquierda(x,y,deltaX,deltaY,f);
+            }
         }
     }
 

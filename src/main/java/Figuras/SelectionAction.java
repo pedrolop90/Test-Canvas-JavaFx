@@ -1,5 +1,6 @@
-package Figuras.Acciones;
+package Figuras;
 
+import Figuras.Acciones.*;
 import Figuras.SelectionModel;
 
 import java.util.Map;
@@ -14,8 +15,7 @@ public class SelectionAction {
         actions.put(Action.SELECTION,new SelectionHanlder(selectionModel));
         actions.put(Action.MOVE,new MoveHanlder(selectionModel));
         actions.put(Action.RESIZE,new ResizeHandler(selectionModel));
-        actions.put(Action.RESIZE_X,new MoveHanlder(selectionModel));
-        actions.put(Action.RESIZE_Y,new MoveHanlder(selectionModel));
+        actions.put(Action.GROUP,new ResizeHandler(selectionModel));
     }
 
     public Map<Action, ActionHandler> getActions() {

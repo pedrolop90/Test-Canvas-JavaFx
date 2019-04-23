@@ -43,11 +43,6 @@ public class testFillSemiCirculo extends Application {
         valores.get(cont).add(60d);
         valores.get(cont).add(ArcType.CHORD);
         cont++;
-        List<Integer> figuras=new ArrayList<>();
-        //figuras.add(Generico.SEMI_CIRCULO_FILL);
-        //figuras.add(Generico.SEMI_CIRCULO_FILL);
-        //figuras.add(Generico.SEMI_CIRCULO_FILL);
-        //Generico f=new Generico(figuras,valores);
         ContenedorPrincipal contenedor=new ContenedorPrincipal(800,600,false);
         contenedor.agregarFigura(ContenedorPrincipal.figuraPredeterminada.SEMICIRCULO_FILL,valores.get(0));
         contenedor.agregarFigura(ContenedorPrincipal.figuraPredeterminada.SEMICIRCULO_FILL,valores.get(1));

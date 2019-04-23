@@ -2,6 +2,7 @@ package Figuras.Acciones;
 
 import Figuras.SelectionModel;
 import Figuras.Shape;
+import javafx.scene.Cursor;
 
 public class MoveHanlder implements ActionHandler {
 

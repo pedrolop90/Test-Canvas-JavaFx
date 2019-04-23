@@ -1,7 +1,10 @@
 package Figuras;
 
 
+import javafx.collections.ObservableList;
+
 import java.util.List;
+import java.util.Observable;
 
 public abstract class Polygon extends Shape {
 
