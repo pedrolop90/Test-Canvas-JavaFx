@@ -1,6 +1,7 @@
 package Figuras;
 
-import Figuras.Fill.*;
+import Figuras.Shapes.RectanguloFill;
+import Figuras.Shapes.SemiCirculoFill;
 import javafx.scene.control.SplitPane;
 
 import java.util.List;

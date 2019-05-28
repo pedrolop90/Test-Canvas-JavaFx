@@ -1,6 +1,7 @@
-package Figuras;
+package Co.Gldc.Diagrammer.Shapes;
 
-import Figuras.Acciones.*;
+import Co.Gldc.Diagrammer.Shapes.Acciones.Action;
+import com.sun.istack.internal.NotNull;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.property.DoubleProperty;
@@ -16,24 +17,26 @@ import javafx.scene.paint.Color;
 
 public class Graphics extends Canvas {
 
-    private ObservableList<Shape> figuras= FXCollections.observableArrayList();
+    private ObservableList<Shape> figuras;
     private SelectionModel selectionModel=new SelectionModel();
     private SelectionAction selectionAction=new SelectionAction(selectionModel);
     private GraphicsContext context=this.getGraphicsContext2D();
 
     public Graphics(){
-        this(800,600);
+        this(null);
     }
 
-    public Graphics(double width,double height){
-        this.setWidth(width);
-        this.setHeight(height);
+    public Graphics(@NotNull ObservableList<Shape> figuras){
         PressedHandler pressedHandler=new PressedHandler();
         setOnMousePressed(pressedHandler);
         setOnMouseMoved(pressedHandler);
         setOnMouseReleased(new ReleasedHandler());
         setOnMouseDragged(new DraggedHandler(pressedHandler));
-        figuras.addListener(new InvalidationListener() {
+        if(figuras==null){
+            figuras=FXCollections.observableArrayList();
+        }
+        this.figuras=figuras;
+        this.figuras.addListener(new InvalidationListener() {
             @Override
             public void invalidated(Observable observable) {
                 reDraw();
@@ -42,9 +45,9 @@ public class Graphics extends Canvas {
     }
 
     public void reDraw(){
-        context.clearRect(0,0,getWidth(),getHeight());
+        context.setFill(Color.WHITE);
+        context.fillRect(0,0,getWidth(),getHeight());
         for (int i = 0; i < figuras.size() ; i++) {
-            context.setFill(Color.AQUA);
             figuras.get(i).draw(context);
             if(figuras.get(i).selectedProperty().get()){
                 figuras.get(i).figuraSeleccionada(context);
@@ -166,7 +169,6 @@ public class Graphics extends Canvas {
         }
     }
 
-
     public ObservableList<Shape> getFiguras() {
         return figuras;
     }
@@ -174,4 +176,7 @@ public class Graphics extends Canvas {
     public void setFiguras(ObservableList<Shape> figuras) {
         this.figuras = figuras;
     }
+
+
+
 }

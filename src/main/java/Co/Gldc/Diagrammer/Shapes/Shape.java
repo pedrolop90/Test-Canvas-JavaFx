@@ -1,6 +1,5 @@
-package Figuras;
+package Co.Gldc.Diagrammer.Shapes;
 
-import com.sun.istack.internal.Nullable;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -20,9 +19,13 @@ public abstract class Shape {
     protected DoubleProperty h=new SimpleDoubleProperty();
     protected BooleanProperty selected=new SimpleBooleanProperty(false);
     protected DoubleProperty tamañoCuadroEsquina=new SimpleDoubleProperty(5);
+    protected Color color=Color.RED;
 
     public Shape(){
-        reiniciar();
+        this.x.set(0);
+        this.y.set(0);
+        this.w.set(100);
+        this.h.set(100);
     }
 
     public Shape(double x, double y, double width, double height){
@@ -192,6 +195,15 @@ public abstract class Shape {
 
     public DoubleProperty tamañoCuadroEsquinaProperty() {
         return tamañoCuadroEsquina;
+    }
+
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 
     public void setTamañoCuadroEsquina(double tamañoCuadroEsquina) {

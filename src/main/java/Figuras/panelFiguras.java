@@ -1,8 +1,7 @@
 package Figuras;
 
-import Figuras.*;
-import Figuras.Fill.CirculoFill;
-import Figuras.Fill.RectanguloFill;
+import Figuras.Shapes.CirculoFill;
+import Figuras.Shapes.RectanguloFill;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.EventHandler;

@@ -1,8 +1,7 @@
-package Figuras.Acciones;
+package Co.Gldc.Diagrammer.Shapes.Acciones;
 
-import Figuras.SelectionModel;
-import Figuras.Shape;
-import javafx.scene.Cursor;
+import Co.Gldc.Diagrammer.Shapes.SelectionModel;
+import Co.Gldc.Diagrammer.Shapes.Shape;
 
 public class ResizeHandler implements ActionHandler {
 
@@ -44,7 +43,7 @@ public class ResizeHandler implements ActionHandler {
         }
     }
 
-    private void resizeEsquinaSuperiorIzquierda(double x,double y,double deltaX,double deltaY,Shape f){
+    private void resizeEsquinaSuperiorIzquierda(double x, double y, double deltaX, double deltaY, Shape f){
         if(f.getW()<0){
             selectionModel.getEsquina()[2]=true;
             selectionModel.getEsquina()[0]=false;
@@ -62,7 +61,7 @@ public class ResizeHandler implements ActionHandler {
     }
 
 
-    private void resizeEsquinaSuperiorDerecha(double x,double y,double deltaX,double deltaY,Shape f){
+    private void resizeEsquinaSuperiorDerecha(double x, double y, double deltaX, double deltaY, Shape f){
         if(x<f.getX()){
             selectionModel.getEsquina()[0]=true;
             selectionModel.getEsquina()[2]=false;
@@ -80,7 +79,7 @@ public class ResizeHandler implements ActionHandler {
     }
 
 
-    private void resizeEsquinaInferiorDerecha(double x,double y,double deltaX,double deltaY,Shape f){
+    private void resizeEsquinaInferiorDerecha(double x, double y, double deltaX, double deltaY, Shape f){
         if(x<f.getX()){
             selectionModel.getEsquina()[6]=true;
             selectionModel.getEsquina()[4]=false;
@@ -97,7 +96,7 @@ public class ResizeHandler implements ActionHandler {
         resizeCentroSur(x,y,deltaX,deltaY,f);
     }
 
-    private void resizeEsquinaInferiorIzquierda(double x,double y,double deltaX,double deltaY,Shape f){
+    private void resizeEsquinaInferiorIzquierda(double x, double y, double deltaX, double deltaY, Shape f){
         if(f.getW()<0){
             selectionModel.getEsquina()[4]=true;
             selectionModel.getEsquina()[6]=false;
@@ -115,7 +114,7 @@ public class ResizeHandler implements ActionHandler {
     }
 
 
-    private void resizeCentroDerecha(double x,double y,double deltaX,double deltaY,Shape f){
+    private void resizeCentroDerecha(double x, double y, double deltaX, double deltaY, Shape f){
         if(x<f.getX()){
             selectionModel.getEsquina()[7]=true;
             selectionModel.getEsquina()[3]=false;

@@ -1,0 +1,11 @@
+.diagrammer{
+    -height:600;
+    -width:800;
+    -fx-pref-width: -width;
+    -fx-max-width: -width;
+    -fx-min-width: -width;
+    -fx-pref-height: -height;
+    -fx-max-height: -height;
+    -fx-min-height: -height;
+
+}

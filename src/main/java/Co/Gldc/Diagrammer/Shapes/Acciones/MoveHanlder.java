@@ -1,8 +1,6 @@
-package Figuras.Acciones;
+package Co.Gldc.Diagrammer.Shapes.Acciones;
 
-import Figuras.SelectionAction;
-import Figuras.SelectionModel;
-import javafx.scene.Cursor;
+import Co.Gldc.Diagrammer.Shapes.SelectionModel;
 
 public class MoveHanlder implements ActionHandler {
 
